@@ -97,19 +97,19 @@
 
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
-                                <a href="index.html" class="nav-item nav-link active">Home</a>
-                                <a href="about.html" class="nav-item nav-link">About</a>
-                                <a href="service.html" class="nav-item nav-link">Service</a>
-                                <a href="team.html" class="nav-item nav-link">Team</a>
-                                <a href="portfolio.html" class="nav-item nav-link">Project</a>
+                                <a href="{%url 'project:home'%}" class="nav-item nav-link active">Home</a>
+                                <a href="{%url 'project:about'%}" class="nav-item nav-link">About</a>
+                                <a href="{%url 'project:service'%}" class="nav-item nav-link">Service</a>
+                                <a href="{%url 'project:team'%}" class="nav-item nav-link">Team</a>
+                                <a href="{%url 'project:portfolio'%}" class="nav-item nav-link">Project</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                     <div class="dropdown-menu">
-                                        <a href="blog.html" class="dropdown-item">Blog Page</a>
-                                        <a href="single.html" class="dropdown-item">Single Page</a>
+                                        <a href="{%url 'project:blog'%}" class="dropdown-item">Blog Page</a>
+                                        <a href="{%url 'project:single'%}" class="dropdown-item">Single Page</a>
                                     </div>
                                 </div>
-                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                                <a href="{%url 'project:contact'%}" class="nav-item nav-link">Contact</a>
                             </div>
                             <div class="ml-auto">
                                 <a class="btn" href="https://htmlcodex.com/construction-company-html-template">Download Pro Version</a>
