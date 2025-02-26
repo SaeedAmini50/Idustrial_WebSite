@@ -32,49 +32,57 @@
 
     <body>
         <div class="wrapper">
-            <!-- Top Bar Start -->
+            <!-- شروع نوار بالای صفحه -->
             <div class="top-bar">
                 <div class="container-fluid">
                     <div class="row align-items-center">
+                        <!-- بخش لوگو -->
                         <div class="col-lg-4 col-md-12">
                             <div class="logo">
                                 <a href="index.html">
-                                    <h1>Builderz</h1>
-                                    <!-- <img src="img/logo.jpg" alt="Logo"> -->
+                                    <h1>بیلدرز</h1>
+                                    <!-- <img src="img/logo.jpg" alt="لوگو"> -->
                                 </a>
                             </div>
                         </div>
+                        
+                        <!-- اطلاعات تماس و ساعت کاری -->
                         <div class="col-lg-8 col-md-7 d-none d-lg-block">
                             <div class="row">
+                                <!-- ساعت کاری -->
                                 <div class="col-4">
                                     <div class="top-bar-item">
                                         <div class="top-bar-icon">
                                             <i class="flaticon-calendar"></i>
                                         </div>
                                         <div class="top-bar-text">
-                                            <h3>Opening Hour</h3>
-                                            <p>Mon - Fri, 8:00 - 9:00</p>
+                                            <h3>ساعات کاری</h3>
+                                            <p>دوشنبه - جمعه، ۸:۰۰ - ۹:۰۰</p>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <!-- شماره تماس -->
                                 <div class="col-4">
                                     <div class="top-bar-item">
                                         <div class="top-bar-icon">
                                             <i class="flaticon-call"></i>
                                         </div>
                                         <div class="top-bar-text">
-                                            <h3>Call Us</h3>
-                                            <p>+012 345 6789</p>
+                                            <h3>تماس با ما</h3>
+                                            <p>+۰۱۲ ۳۴۵ ۶۷۸۹</p>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <!-- ایمیل -->
                                 <div class="col-4">
                                     <div class="top-bar-item">
                                         <div class="top-bar-icon">
                                             <i class="flaticon-send-mail"></i>
                                         </div>
                                         <div class="top-bar-text">
-                                            <h3>Email Us</h3>
+                                            <h3>ایمیل ما</h3>
                                             <p>info@example.com</p>
                                         </div>
                                     </div>
@@ -84,42 +92,43 @@
                     </div>
                 </div>
             </div>
-            <!-- Top Bar End -->
-
-            <!-- Nav Bar Start -->
+            <!-- پایان نوار بالای صفحه -->
+            <!-- شروع نوار ناوبری -->
             <div class="nav-bar">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-                        <a href="#" class="navbar-brand">MENU</a>
+                        <!-- دکمه منو برای نسخه موبایل -->
+                        <a href="#" class="navbar-brand">منو</a>
                         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
+                        <!-- لینک‌های منو -->
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto">
-                                <a href="{%url 'project:home'%}" class="nav-item nav-link active">Home</a>
-                                <a href="{%url 'project:about'%}" class="nav-item nav-link">About</a>
-                                <a href="{%url 'project:service'%}" class="nav-item nav-link">Service</a>
-                                <a href="{%url 'project:team'%}" class="nav-item nav-link">Team</a>
-                                <a href="{%url 'project:portfolio'%}" class="nav-item nav-link">Project</a>
+                            <div class="navbar-nav ml-auto">
+                                <a href="{%url 'project:home'%}" class="nav-item nav-link active">خانه</a>
+                                <a href="{%url 'project:about'%}" class="nav-item nav-link">درباره ما</a>
+                                <a href="{%url 'project:service'%}" class="nav-item nav-link">خدمات</a>
+                                <a href="{%url 'project:team'%}" class="nav-item nav-link">تیم ما</a>
+                                <a href="{%url 'project:portfolio'%}" class="nav-item nav-link">پروژه‌ها</a>
                                 <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">صفحات</a>
                                     <div class="dropdown-menu">
-                                        <a href="{%url 'project:blog'%}" class="dropdown-item">Blog Page</a>
-                                        <a href="{%url 'project:single'%}" class="dropdown-item">Single Page</a>
+                                        <a href="{%url 'project:blog'%}" class="dropdown-item">صفحه وبلاگ</a>
+                                        <a href="{%url 'project:single'%}" class="dropdown-item">صفحه تکی</a>
                                     </div>
                                 </div>
-                                <a href="{%url 'project:contact'%}" class="nav-item nav-link">Contact</a>
+                                <a href="{%url 'project:contact'%}" class="nav-item nav-link">تماس با ما</a>
                             </div>
-                            <div class="ml-auto">
-                                <a class="btn" href="https://htmlcodex.com/construction-company-html-template">Download Pro Version</a>
+                            <!-- دکمه دانلود -->
+                            <div class="mr-auto">
+                                <a class="btn" href="https://htmlcodex.com/construction-company-html-template">دانلود نسخه حرفه‌ای</a>
                             </div>
                         </div>
                     </nav>
                 </div>
             </div>
-            <!-- Nav Bar End -->
-
+            <!-- پایان نوار ناوبری -->
 
             {% block content %}
 
@@ -128,17 +137,16 @@
         
 
 
-
-            
-            <!-- Footer Start -->
+            <!-- شروع فوتر (پاورقی) -->
             <div class="footer wow fadeIn" data-wow-delay="0.3s">
                 <div class="container">
                     <div class="row">
+                        <!-- اطلاعات تماس دفتر -->
                         <div class="col-md-6 col-lg-3">
                             <div class="footer-contact">
-                                <h2>Office Contact</h2>
-                                <p><i class="fa fa-map-marker-alt"></i>123 Street, New York, USA</p>
-                                <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                                <h2>اطلاعات تماس</h2>
+                                <p><i class="fa fa-map-marker-alt"></i>۱۲۳ خیابان، نیویورک، آمریکا</p>
+                                <p><i class="fa fa-phone-alt"></i>+۰۱۲ ۳۴۵ ۶۷۸۹۰</p>
                                 <p><i class="fa fa-envelope"></i>info@example.com</p>
                                 <div class="footer-social">
                                     <a href=""><i class="fab fa-twitter"></i></a>
@@ -149,63 +157,72 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- لینک‌های خدمات -->
                         <div class="col-md-6 col-lg-3">
                             <div class="footer-link">
-                                <h2>Services Areas</h2>
-                                <a href="">Building Construction</a>
-                                <a href="">House Renovation</a>
-                                <a href="">Architecture Design</a>
-                                <a href="">Interior Design</a>
-                                <a href="">Painting</a>
+                                <h2>خدمات ما</h2>
+                                <a href="">ساخت و ساز ساختمان</a>
+                                <a href="">بازسازی خانه</a>
+                                <a href="">طراحی معماری</a>
+                                <a href="">طراحی داخلی</a>
+                                <a href="">نقاشی ساختمان</a>
                             </div>
                         </div>
+
+                        <!-- لینک‌های صفحات مهم -->
                         <div class="col-md-6 col-lg-3">
                             <div class="footer-link">
-                                <h2>Useful Pages</h2>
-                                <a href="">About Us</a>
-                                <a href="">Contact Us</a>
-                                <a href="">Our Team</a>
-                                <a href="">Projects</a>
-                                <a href="">Testimonial</a>
+                                <h2>صفحات مفید</h2>
+                                <a href="">درباره ما</a>
+                                <a href="">تماس با ما</a>
+                                <a href="">تیم ما</a>
+                                <a href="">پروژه‌ها</a>
+                                <a href="">نظرات مشتریان</a>
                             </div>
                         </div>
+
+                        <!-- بخش عضویت در خبرنامه -->
                         <div class="col-md-6 col-lg-3">
                             <div class="newsletter">
-                                <h2>Newsletter</h2>
+                                <h2>عضویت در خبرنامه</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu
+                                    برای دریافت جدیدترین اخبار و اطلاعات، ایمیل خود را وارد کنید.
                                 </p>
                                 <div class="form">
-                                    <input class="form-control" placeholder="Email here">
-                                    <button class="btn">Submit</button>
+                                    <input class="form-control" placeholder="ایمیل خود را وارد کنید">
+                                    <button class="btn">ارسال</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- منوی فوتر -->
                 <div class="container footer-menu">
                     <div class="f-menu">
-                        <a href="">Terms of use</a>
-                        <a href="">Privacy policy</a>
-                        <a href="">Cookies</a>
-                        <a href="">Help</a>
-                        <a href="">FQAs</a>
+                        <a href="">شرایط استفاده</a>
+                        <a href="">حریم خصوصی</a>
+                        <a href="">کوکی‌ها</a>
+                        <a href="">راهنما</a>
+                        <a href="">سوالات متداول</a>
                     </div>
                 </div>
+
+                <!-- بخش کپی‌رایت -->
                 <div class="container copyright">
                     <div class="row">
                         <div class="col-md-6">
-                            <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>
+                            <p>&copy; <a href="#">نام سایت شما</a>، تمامی حقوق محفوظ است.</p>
                         </div>
 						
-						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                         <div class="col-md-6">
-                            <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                            <p>طراحی شده توسط <a href="https://htmlcodex.com">HTML Codex</a></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Footer End -->
+            <!-- پایان فوتر (پاورقی) -->
 
             <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         </div>

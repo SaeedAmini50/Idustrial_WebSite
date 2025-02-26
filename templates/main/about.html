@@ -1,59 +1,61 @@
 {% extends 'base.html' %}
 {% load static%}
 {%  block content %} 
-
-
-            <!-- Page Header Start -->
+            <!-- شروع هدر صفحه -->
             <div class="page-header">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h2>About Us</h2>
+                            <h2>درباره ما</h2>
                         </div>
                         <div class="col-12">
-                            <a href="">Home</a>
-                            <a href="">About Us</a>
+                            <a href="">صفحه اصلی</a>
+                            <a href="">درباره ما</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Page Header End -->
+            <!-- پایان هدر صفحه -->
 
 
-            <!-- About Start -->
+            <!-- شروع بخش درباره ما -->
             <div class="about wow fadeInUp" data-wow-delay="0.1s">
                 <div class="container">
                     <div class="row align-items-center">
+                        <!-- تصویر درباره ما -->
                         <div class="col-lg-5 col-md-6">
                             <div class="about-img">
-                                <img src="{% static '' %}img/about.jpg" alt="Image">
+                                <img src="{% static '' %}img/about.jpg" alt="تصویر">
                             </div>
                         </div>
+                        
+                        <!-- متن درباره ما -->
                         <div class="col-lg-7 col-md-6">
-                            <div class="section-header text-left">
-                                <p>Welcome to Builderz</p>
-                                <h2>25 Years Experience</h2>
+                            <div class="section-header text-right">
+                                <p>به بیلدرز خوش آمدید</p>
+                                <h2>۲۵ سال تجربه</h2>
                             </div>
                             <div class="about-text">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
+                                    ما با بیش از ۲۵ سال تجربه در صنعت ساخت و ساز، پروژه‌های متعددی را با بالاترین کیفیت اجرا کرده‌ایم. تیم متخصص ما آماده ارائه خدمات حرفه‌ای است.
                                 </p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non blandit.
+                                    هدف ما ایجاد فضاهای باکیفیت و ایمن برای مشتریان عزیز است. ما با استفاده از تکنولوژی‌های روز دنیا و متریال‌های استاندارد، بهترین تجربه را برای شما رقم می‌زنیم.
                                 </p>
-                                <a class="btn" href="">Learn More</a>
+                                <a class="btn" href="">بیشتر بدانید</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- About End -->
+            <!-- پایان بخش درباره ما -->
             
             
-            <!-- Fact Start -->
+            <!-- شروع بخش آمار و ارقام -->
             <div class="fact">
                 <div class="container-fluid">
                     <div class="row counters">
+                        <!-- بخش چپ: نمایش دو آمار -->
                         <div class="col-md-6 fact-left wow slideInLeft">
                             <div class="row">
                                 <div class="col-6">
@@ -61,8 +63,8 @@
                                         <i class="flaticon-worker"></i>
                                     </div>
                                     <div class="fact-text">
-                                        <h2 data-toggle="counter-up">109</h2>
-                                        <p>Expert Workers</p>
+                                        <h2 data-toggle="counter-up">۱۰۹</h2>
+                                        <p>نیروی کار متخصص</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -70,12 +72,14 @@
                                         <i class="flaticon-building"></i>
                                     </div>
                                     <div class="fact-text">
-                                        <h2 data-toggle="counter-up">485</h2>
-                                        <p>Happy Clients</p>
+                                        <h2 data-toggle="counter-up">۴۸۵</h2>
+                                        <p>مشتریان راضی</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- بخش راست: نمایش دو آمار دیگر -->
                         <div class="col-md-6 fact-right wow slideInRight">
                             <div class="row">
                                 <div class="col-6">
@@ -83,8 +87,8 @@
                                         <i class="flaticon-address"></i>
                                     </div>
                                     <div class="fact-text">
-                                        <h2 data-toggle="counter-up">789</h2>
-                                        <p>Completed Projects</p>
+                                        <h2 data-toggle="counter-up">۷۸۹</h2>
+                                        <p>پروژه‌های تکمیل‌شده</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -92,8 +96,8 @@
                                         <i class="flaticon-crane"></i>
                                     </div>
                                     <div class="fact-text">
-                                        <h2 data-toggle="counter-up">890</h2>
-                                        <p>Running Projects</p>
+                                        <h2 data-toggle="counter-up">۸۹۰</h2>
+                                        <p>پروژه‌های در حال اجرا</p>
                                     </div>
                                 </div>
                             </div>
@@ -101,140 +105,94 @@
                     </div>
                 </div>
             </div>
-            <!-- Fact End -->
+            <!-- پایان بخش آمار و ارقام -->
             
-            
-            <!-- FAQs Start -->
+            <!-- شروع بخش سوالات متداول -->
             <div class="faqs">
                 <div class="container">
                     <div class="section-header text-center">
-                        <p>Frequently Asked Question</p>
-                        <h2>You May Ask</h2>
+                        <p>سوالات متداول</p>
+                        <h2>سوالات شما</h2>
                     </div>
                     <div class="row">
+                        <!-- ستون اول سوالات -->
                         <div class="col-md-6">
                             <div id="accordion-1">
                                 <div class="card wow fadeInLeft" data-wow-delay="0.1s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne">
-                                            Lorem ipsum dolor sit amet?
+                                            چگونه می‌توانم سفارش دهم؟
                                         </a>
                                     </div>
                                     <div id="collapseOne" class="collapse" data-parent="#accordion-1">
                                         <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                            برای ثبت سفارش، وارد سایت شوید، محصول مورد نظر را انتخاب کنید و مراحل خرید را تکمیل کنید.
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card wow fadeInLeft" data-wow-delay="0.2s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo">
-                                            Lorem ipsum dolor sit amet?
+                                            روش‌های پرداخت چیست؟
                                         </a>
                                     </div>
                                     <div id="collapseTwo" class="collapse" data-parent="#accordion-1">
                                         <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                            پرداخت از طریق کارت‌های بانکی، کیف پول الکترونیکی و پرداخت در محل امکان‌پذیر است.
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card wow fadeInLeft" data-wow-delay="0.3s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseThree">
-                                            Lorem ipsum dolor sit amet?
+                                            مدت زمان ارسال سفارش چقدر است؟
                                         </a>
                                     </div>
                                     <div id="collapseThree" class="collapse" data-parent="#accordion-1">
                                         <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.4s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseFour">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseFour" class="collapse" data-parent="#accordion-1">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.5s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseFive">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseFive" class="collapse" data-parent="#accordion-1">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                            بسته به نوع محصول و محل شما، ارسال معمولاً بین ۳ تا ۷ روز کاری زمان می‌برد.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- ستون دوم سوالات -->
                         <div class="col-md-6">
                             <div id="accordion-2">
                                 <div class="card wow fadeInRight" data-wow-delay="0.1s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseSix">
-                                            Lorem ipsum dolor sit amet?
+                                            آیا امکان بازگشت کالا وجود دارد؟
                                         </a>
                                     </div>
                                     <div id="collapseSix" class="collapse" data-parent="#accordion-2">
                                         <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                            بله، در صورت وجود مشکل در محصول، تا ۷ روز می‌توانید آن را بازگردانید.
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card wow fadeInRight" data-wow-delay="0.2s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseSeven">
-                                            Lorem ipsum dolor sit amet?
+                                            چگونه می‌توانم با پشتیبانی تماس بگیرم؟
                                         </a>
                                     </div>
                                     <div id="collapseSeven" class="collapse" data-parent="#accordion-2">
                                         <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                            شما می‌توانید از طریق تماس تلفنی، ایمیل یا چت آنلاین با ما در ارتباط باشید.
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card wow fadeInRight" data-wow-delay="0.3s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseEight">
-                                            Lorem ipsum dolor sit amet?
+                                            آیا محصولات دارای گارانتی هستند؟
                                         </a>
                                     </div>
                                     <div id="collapseEight" class="collapse" data-parent="#accordion-2">
                                         <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.4s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseNine">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseNine" class="collapse" data-parent="#accordion-2">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.5s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseTen" class="collapse" data-parent="#accordion-2">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                            بله، تمامی محصولات ما دارای گارانتی رسمی از شرکت‌های معتبر هستند.
                                         </div>
                                     </div>
                                 </div>
@@ -243,7 +201,8 @@
                     </div>
                 </div>
             </div>
-            <!-- FAQs End -->
-<!-- FOOTER -->
+            <!-- پایان بخش سوالات متداول -->
+            
+            <!-- FOOTER -->
 {% endblock %}
 
