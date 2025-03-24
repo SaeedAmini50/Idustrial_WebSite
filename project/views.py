@@ -19,6 +19,9 @@ def service (requset):
 def single (requset):
     return render(requset , 'single.html')
 
+def cnc (requset):
+    return render(requset , 'cnc.html')
+
 def team (requset):
     return render(requset , 'team.html')
 
