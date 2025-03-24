@@ -587,9 +587,11 @@ a:focus {
 
 .feature .feature-text {
     padding-left: 30px;
+
 }
 
 .feature .feature-text h3 {
+    text-align: left;
     margin: 0 0 10px 0;
     color: #fdbe33;
     font-size: 25px;
@@ -601,6 +603,7 @@ a:focus {
     color: #fdbe33;
     font-size: 18px;
     font-weight: 400;
+    text-align: left;
 }
 
 .feature .col-md-12:nth-child(2n) [class^="flaticon-"]::before,
@@ -2056,6 +2059,7 @@ a:focus {
     border-width: 1px;
     border-color: rgba(256, 256, 256, .4);
     background: transparent;
+    text-align: left;
 }
 
 .contact .contact-form input:focus,
@@ -2066,6 +2070,7 @@ a:focus {
 .contact .contact-form .form-control::placeholder {
   color: #ffffff;
   opacity: 1;
+  
 }
 
 .contact .contact-form .form-control::-ms-input-placeholder {
