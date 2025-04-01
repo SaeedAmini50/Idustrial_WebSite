@@ -1,5 +1,6 @@
 from django.urls import path
-from project.views import home,about,blog,portfolio,service,single,team,contact,cnc
+from project.views import home,about,blog,portfolio,service,single,team,contact,cnc,header,footer
+
 
 app_name = 'project'
 urlpatterns = [
@@ -13,4 +14,9 @@ urlpatterns = [
     path('team/', team , name='team'),
     path('contact/', contact , name='contact'),
     path('cnc/', cnc , name='cnc'),
+    path('header/', header , name='header'),
+    path('footer/', footer , name='footer'),
+    
+
+    
 ]

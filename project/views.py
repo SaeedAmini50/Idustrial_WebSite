@@ -1,8 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from textInfo.models import TextEntry
 
 def home (requset):
     return render(requset , 'index.html')
+
+
+def footer (requset):
+    return render(requset , 'footer.html')
+
+
+
+def header (requset):
+    return render(requset , 'header.html')
+
+
+
+
 
 def about (requset):
     return render(requset , 'about.html')
@@ -27,3 +41,10 @@ def team (requset):
 
 def contact (requset):
     return render(requset , 'contact.html')
+
+def home_view(request):
+    return render(request, 'single.html')
+
+def text_list_view(request):
+    texts = TextEntry.objects.filter(is_visible=True).order_by('unique_id')
+    return render(request, 'text_list.html', {'texts': texts})

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'project',
+    'textInfo',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates/main/')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/main')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,15 +117,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
+# Media files (Uploaded files)
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
-STATIC_ROOT=os.path.join(BASE_DIR,'static_cdn')
-MEDIA_ROOT=os.path.join(BASE_DIR,'media_cdn')
-
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static'),
-    os.path.join(BASE_DIR,'media')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 # Default primary key field type
