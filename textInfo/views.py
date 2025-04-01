@@ -22,3 +22,9 @@ class AdminTextListView(ListView):
 
     def get_queryset(self):
         return TextEntry.objects.all().order_by('unique_id')
+
+
+def single(request):
+    texts = TextEntry.objects.filter(is_visible=True).order_by('unique_id')
+    return render(request, 'single.html', {'texts': texts})
+

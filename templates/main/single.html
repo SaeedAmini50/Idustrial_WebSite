@@ -20,6 +20,27 @@
     {% else %}
         <p>هیچ متنی برای نمایش وجود ندارد.</p>
     {% endif %}
+    <!-- بررسی و نمایش خطاهای احتمالی -->
+    {% if error_message %}
+        <div class="alert alert-danger">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+    <!-- بررسی تنظیمات دیتابیس -->
+    <div class="debug-info">
+        <h4>اطلاعات اتصال به دیتابیس:</h4>
+        <p>Database Engine: {{ db_engine }}</p>
+        <p>Database Name: {{ db_name }}</p>
+        <p>Is Connected: {{ is_connected|yesno:"Yes,No" }}</p>
+    </div>
+
+    <!-- بررسی مدل و کوئری -->
+    <div class="query-info">
+        <h4>اطلاعات کوئری:</h4>
+        <p>Query Count: {{ query_count }}</p>
+        <p>Last Query: {{ last_query }}</p>
+    </div>
 
     <!-- Page Header Start -->
     <div class="page-header">
@@ -29,8 +50,8 @@
                     <h2>Single Page</h2>
                 </div>
                 <div class="col-12">
-                    <a href="">Home</a>
-                    <a href="">Single Page</a>
+                    <a href="{% url 'project:home' %}">Home</a>
+                    <a href="{% url 'textInfo:single' %}">Single Page</a>
                 </div>
             </div>
         </div>

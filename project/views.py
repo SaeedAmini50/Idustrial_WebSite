@@ -30,9 +30,6 @@ def portfolio (requset):
 def service (requset):
     return render(requset , 'service.html')
 
-def single (requset):
-    return render(requset , 'single.html')
-
 def cnc (requset):
     return render(requset , 'cnc.html')
 

@@ -6,4 +6,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('project.urls', namespace='project')),  # اضافه کردن namespace
+    path('', include('textInfo.urls', namespace='textInfo')),  # اضافه کردن URL های textInfo
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
