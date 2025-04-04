@@ -45,7 +45,7 @@ def single(request):
     return render(request, 'main/single.html', {'texts': texts, 'numbers': numbers})
 
 def number2(request):
-    numbers = Number.objects.all()
+    numbers = Number.objects.all()[:4]
     return render(request, 'main/number2.html', {'numbers': numbers})
 
 def home_view(request):
