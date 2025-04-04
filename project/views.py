@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from textInfo.models import TextEntry
+from textInfo.models import TextEntry, Number
 
 def home (requset):
     return render(requset , 'index.html')
@@ -38,6 +38,15 @@ def team (requset):
 
 def contact (requset):
     return render(requset , 'contact.html')
+
+def single(request):
+    texts = TextEntry.objects.filter(is_visible=True).order_by('unique_id')
+    numbers = Number.objects.all()
+    return render(request, 'main/single.html', {'texts': texts, 'numbers': numbers})
+
+def number2(request):
+    numbers = Number.objects.all()
+    return render(request, 'main/number2.html', {'numbers': numbers})
 
 def home_view(request):
     return render(request, 'single.html')

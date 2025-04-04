@@ -82,3 +82,12 @@ class TextEntry(models.Model):
         verbose_name = 'Text Entry'
         verbose_name_plural = 'Text Entries'
         ordering = ['unique_id']
+
+
+
+class Number(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    value = models.IntegerField()
+ 
+    def __str__(self):
+        return f"{self.name}: {self.value}"

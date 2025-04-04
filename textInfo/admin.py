@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextEntry, Category
+from .models import TextEntry, Category,Number
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -28,3 +28,11 @@ class TextEntryAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+
+
+
+@admin.register(Number)
+class NumberAdmin(admin.ModelAdmin):
+    list_display = ('name', 'value')    
+
+    
