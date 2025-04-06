@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import TextEntry, Category,Number
+from .models import TextEntry, Category, Number, HeaderInfo
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -34,5 +35,10 @@ class TextEntryAdmin(admin.ModelAdmin):
 @admin.register(Number)
 class NumberAdmin(admin.ModelAdmin):
     list_display = ('name', 'value')    
-
+    search_fields = ('name',)
     
+@admin.register(HeaderInfo)
+class HeaderInfoAdmin(admin.ModelAdmin):
+    list_display = ('company_name', 'email', 'phone', 'working_hours')
+    search_fields = ('company_name', 'email', 'phone')
+    fields = ('company_name', 'email', 'phone', 'working_hours', 'logo')

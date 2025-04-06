@@ -6,10 +6,15 @@
                 <!-- بخش لوگو -->
                 <div class="col-lg-4 col-md-12">
                     <div class="logo">
-                        <a href="{%url 'project:home'%}">
-                            <h1>HPN</h1>
-                            <!-- <img src="img/logo.jpg" alt="لوگو"> -->
-                        </a>
+                        {% if header_info and header_info.logo %}
+                            <a href="{% url 'project:home' %}">
+                                <img src="{{ header_info.logo.url }}" alt="لوگو">
+                            </a>
+                        {% else %}
+                            <a href="{% url 'project:home' %}">
+                                <h1>{{ header_info.company_name|default:"HPN" }}</h1>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
                 
@@ -24,7 +29,7 @@
                                 </div>
                                 <div class="top-bar-text">
                                     <h3>ساعات کاری</h3>
-                                    <p>دوشنبه - جمعه، ۸:۰۰ - ۹:۰۰</p>
+                                    <p>{{ header_info.working_hours|default:"دوشنبه - جمعه، ۸:۰۰ - ۹:۰۰" }}</p>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +42,7 @@
                                 </div>
                                 <div class="top-bar-text">
                                     <h3>تماس با ما</h3>
-                                    <p>+۰۱۲ ۳۴۵ ۶۷۸۹</p>
+                                    <p>{{ header_info.phone|default:"+۰۱۲ ۳۴۵ ۶۷۸۹" }}</p>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +55,7 @@
                                 </div>
                                 <div class="top-bar-text">
                                     <h3>ایمیل ما</h3>
-                                    <p>info@example.com</p>
+                                    <p>{{ header_info.email|default:"info@example.com" }}</p>
                                 </div>
                             </div>
                         </div>

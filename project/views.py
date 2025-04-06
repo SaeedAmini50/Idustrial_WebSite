@@ -42,11 +42,11 @@ def contact (requset):
 def single(request):
     texts = TextEntry.objects.filter(is_visible=True).order_by('unique_id')
     numbers = Number.objects.all()
-    return render(request, 'main/single.html', {'texts': texts, 'numbers': numbers})
+    return render(request, 'single.html', {'texts': texts, 'numbers': numbers})
 
 def number2(request):
     numbers = Number.objects.all()[:4]
-    return render(request, 'main/number2.html', {'numbers': numbers})
+    return render(request, 'number2.html', {'numbers': numbers})
 
 def home_view(request):
     return render(request, 'single.html')

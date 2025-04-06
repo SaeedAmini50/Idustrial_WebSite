@@ -1,4 +1,4 @@
-from .models import Number, TextEntry
+from .models import Number, TextEntry, HeaderInfo
 
 def numbers_processor(request):
     """
@@ -7,4 +7,17 @@ def numbers_processor(request):
     numbers = Number.objects.all()[:4]  # فقط 4 عدد اول
     return {
         'numbers': numbers
+    }
+
+def header_info_processor(request):
+    """
+    این پردازشگر زمینه، اطلاعات هدر را به تمام قالب‌ها ارسال می‌کند.
+    """
+    try:
+        header_info = HeaderInfo.objects.first()
+    except HeaderInfo.DoesNotExist:
+        header_info = None
+    
+    return {
+        'header_info': header_info
     }

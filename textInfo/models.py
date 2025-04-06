@@ -91,3 +91,21 @@ class Number(models.Model):
  
     def __str__(self):
         return f"{self.name}: {self.value}"
+
+class HeaderInfo(models.Model):
+    company_name = models.CharField(max_length=200, verbose_name='نام شرکت')
+    email = models.EmailField(verbose_name='ایمیل')
+    phone = models.CharField(max_length=20, verbose_name='شماره تماس')
+    working_hours = models.CharField(max_length=100, verbose_name='ساعت کاری')
+    logo = models.ImageField(upload_to='logos/', verbose_name='لوگو', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'اطلاعات هدر'
+        verbose_name_plural = 'اطلاعات هدر'
+
+    def __str__(self):
+        return self.company_name
+
+
+
+
