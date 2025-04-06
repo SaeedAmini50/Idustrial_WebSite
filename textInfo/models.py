@@ -106,6 +106,33 @@ class HeaderInfo(models.Model):
     def __str__(self):
         return self.company_name
 
+class FooterInfo(models.Model):
+    email = models.EmailField(verbose_name='ایمیل')
+    phone = models.CharField(max_length=20, verbose_name='شماره تماس')
+    location = models.TextField(verbose_name='موقعیت')
+    telegram_link = models.URLField(verbose_name='لینک تلگرام', blank=True, null=True)
+    aparat_link = models.URLField(verbose_name='لینک آپارات', blank=True, null=True)
+    whatsapp_link = models.URLField(verbose_name='لینک واتساپ', blank=True, null=True)
+    facebook_link = models.URLField(verbose_name='لینک فیسبوک', blank=True, null=True)
+    instagram_link = models.URLField(verbose_name='لینک اینستاگرام', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'اطلاعات فوتر'
+        verbose_name_plural = 'اطلاعات فوتر'
+
+    def __str__(self):
+        return "اطلاعات فوتر"
 
 
 
+class CompanyInfo(models.Model):
+    title = models.CharField(max_length=200, verbose_name='عنوان')
+    content = models.TextField(verbose_name='متن')
+    image = models.ImageField(upload_to='company_info/', verbose_name='عکس', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'اطلاعات معرفی شرکت'
+        verbose_name_plural = 'اطلاعات معرفی شرکت'
+
+    def __str__(self):
+        return self.title

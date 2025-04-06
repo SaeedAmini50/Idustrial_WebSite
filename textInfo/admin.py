@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextEntry, Category, Number, HeaderInfo
+from .models import TextEntry, Category, Number, HeaderInfo, FooterInfo, CompanyInfo
 
 
 @admin.register(Category)
@@ -42,3 +42,15 @@ class HeaderInfoAdmin(admin.ModelAdmin):
     list_display = ('company_name', 'email', 'phone', 'working_hours')
     search_fields = ('company_name', 'email', 'phone')
     fields = ('company_name', 'email', 'phone', 'working_hours', 'logo')
+
+@admin.register(FooterInfo)
+class FooterInfoAdmin(admin.ModelAdmin):
+    list_display = ('email', 'phone', 'location')
+    search_fields = ('email', 'phone', 'location')
+    fields = ('email', 'phone', 'location', 'telegram_link', 'aparat_link', 'whatsapp_link', 'facebook_link', 'instagram_link')
+
+@admin.register(CompanyInfo)
+class CompanyInfoAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title', 'content')
+    fields = ('title', 'content', 'image')

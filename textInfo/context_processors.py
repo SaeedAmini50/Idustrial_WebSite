@@ -1,4 +1,4 @@
-from .models import Number, TextEntry, HeaderInfo
+from .models import Number, TextEntry, HeaderInfo, FooterInfo, CompanyInfo
 
 def numbers_processor(request):
     """
@@ -20,4 +20,30 @@ def header_info_processor(request):
     
     return {
         'header_info': header_info
+    }
+
+def footer_info_processor(request):
+    """
+    این پردازشگر زمینه، اطلاعات فوتر را به تمام قالب‌ها ارسال می‌کند.
+    """
+    try:
+        footer_info = FooterInfo.objects.first()
+    except FooterInfo.DoesNotExist:
+        footer_info = None
+    
+    return {
+        'footer_info': footer_info
+    }
+
+def company_info_processor(request):
+    """
+    این پردازشگر زمینه، اطلاعات معرفی شرکت را به تمام قالب‌ها ارسال می‌کند.
+    """
+    try:
+        company_info = CompanyInfo.objects.first()
+    except CompanyInfo.DoesNotExist:
+        company_info = None
+    
+    return {
+        'company_info': company_info
     }

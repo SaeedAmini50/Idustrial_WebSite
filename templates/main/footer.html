@@ -7,15 +7,25 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="footer-contact">
                                 <h2>اطلاعات تماس</h2>
-                                <p><i class="fa fa-map-marker-alt"></i>۱۲۳ خیابان، نیویورک، آمریکا</p>
-                                <p><i class="fa fa-phone-alt"></i>+۰۱۲ ۳۴۵ ۶۷۸۹۰</p>
-                                <p><i class="fa fa-envelope"></i>info@example.com</p>
+                                <p><i class="fa fa-map-marker-alt"></i>{{ footer_info.location|default:"TEHRAN, IRAN" }}</p>
+                                <p><i class="fa fa-phone-alt"></i>{{ footer_info.phone|default:"00989123456789" }}</p>
+                                <p><i class="fa fa-envelope"></i>{{ footer_info.email|default:"H.P.N.@gmail.com" }}</p>
                                 <div class="footer-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-youtube"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    {% if footer_info.telegram_link %}
+                                        <a href="{{ footer_info.telegram_link }}"><i class="fab fa-telegram"></i></a>
+                                    {% endif %}
+                                    {% if footer_info.facebook_link %}
+                                        <a href="{{ footer_info.facebook_link }}"><i class="fab fa-facebook-f"></i></a>
+                                    {% endif %}
+                                    {% if footer_info.aparat_link %}
+                                        <a href="{{ footer_info.aparat_link }}"><i class="fab fa-youtube"></i></a>
+                                    {% endif %}
+                                    {% if footer_info.instagram_link %}
+                                        <a href="{{ footer_info.instagram_link }}"><i class="fab fa-instagram"></i></a>
+                                    {% endif %}
+                                    {% if footer_info.whatsapp_link %}
+                                        <a href="{{ footer_info.whatsapp_link }}"><i class="fab fa-whatsapp"></i></a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
