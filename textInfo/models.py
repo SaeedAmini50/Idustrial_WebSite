@@ -136,3 +136,17 @@ class CompanyInfo(models.Model):
 
     def __str__(self):
         return self.title
+
+class Service(models.Model):
+    title = models.CharField(max_length=200, verbose_name='عنوان خدمت')
+    content = models.TextField(verbose_name='توضیحات خدمت')
+    image = models.ImageField(upload_to='services/', verbose_name='عکس خدمت', null=True, blank=True)
+    service_link = models.URLField(verbose_name='لینک خدمت', blank=True, null=True)
+    is_visible = models.BooleanField(default=True, verbose_name='نمایش در سایت')
+
+    class Meta:
+        verbose_name = 'خدمت'
+        verbose_name_plural = 'خدمات'
+
+    def __str__(self):
+        return self.title

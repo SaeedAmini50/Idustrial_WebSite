@@ -1,4 +1,4 @@
-from .models import Number, TextEntry, HeaderInfo, FooterInfo, CompanyInfo
+from .models import Number, TextEntry, HeaderInfo, FooterInfo, CompanyInfo, Service
 
 def numbers_processor(request):
     """
@@ -47,3 +47,10 @@ def company_info_processor(request):
     return {
         'company_info': company_info
     }
+
+def services_processor(request):
+    try:
+        services = Service.objects.filter(is_visible=True)
+        return {'services': services}
+    except:
+        return {'services': []}

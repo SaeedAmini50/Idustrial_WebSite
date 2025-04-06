@@ -32,6 +32,8 @@
                         <h2>برای هرگونه سوال</h2>
                     </div>
                     <div class="row">
+
+
                         <!-- اطلاعات تماس -->
                         <div class="col-md-6">
                             <div class="contact-info">
@@ -39,21 +41,21 @@
                                     <i class="flaticon-address"></i>
                                     <div class="contact-text">
                                         <h2>موقعیت مکانی</h2>
-                                        <p>۱۲۳ خیابان، نیویورک، آمریکا</p>
+                                        <p></i>{{ footer_info.location|default:"TEHRAN, IRAN" }}</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">
                                     <i class="flaticon-call"></i>
                                     <div class="contact-text">
                                         <h2>تلفن</h2>
-                                        <p>+۰۱۲ ۳۴۵ ۶۷۸۹۰</p>
+                                        <p><i class="fa fa-phone-alt"></i>{{ footer_info.phone|default:"00989123456789" }}</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">
                                     <i class="flaticon-send-mail"></i>
                                     <div class="contact-text">
                                         <h2>ایمیل</h2>
-                                        <p>info@example.com</p>
+                                        <p></i>{{ footer_info.email|default:"H.P.N.@gmail.com" }}</p>
                                     </div>
                                 </div>
                             </div>

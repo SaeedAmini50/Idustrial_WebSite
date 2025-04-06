@@ -67,6 +67,7 @@ TEMPLATES = [
                 'textInfo.context_processors.header_info_processor',
                 'textInfo.context_processors.footer_info_processor',
                 'textInfo.context_processors.company_info_processor',
+                'textInfo.context_processors.services_processor',
             ],
         },
     },
