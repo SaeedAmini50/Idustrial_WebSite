@@ -150,3 +150,21 @@ class Service(models.Model):
 
     def __str__(self):
         return self.title
+
+class Employee(models.Model):
+    first_name = models.CharField(max_length=100, verbose_name='نام')
+    last_name = models.CharField(max_length=100, verbose_name='نام خانوادگی')
+    job_title = models.CharField(max_length=200, verbose_name='عنوان شغلی')
+    email = models.EmailField(verbose_name='ایمیل', blank=True, null=True)
+    phone = models.CharField(max_length=20, verbose_name='شماره تماس', blank=True, null=True)
+    whatsapp_link = models.URLField(verbose_name='لینک واتساپ', blank=True, null=True)
+    telegram_link = models.URLField(verbose_name='لینک تلگرام', blank=True, null=True)
+    image = models.ImageField(upload_to='employees/', verbose_name='عکس', null=True, blank=True)
+    is_visible = models.BooleanField(default=True, verbose_name='نمایش در سایت')
+
+    class Meta:
+        verbose_name = 'کارمند'
+        verbose_name_plural = 'کارمندان'
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} - {self.job_title}"

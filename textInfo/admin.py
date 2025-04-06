@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextEntry, Category, Number, HeaderInfo, FooterInfo, CompanyInfo, Service
+from .models import TextEntry, Category, Number, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee
 
 
 @admin.register(Category)
@@ -61,3 +61,10 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = ('is_visible',)
     search_fields = ('title', 'content', 'service_link')
     fields = ('title', 'content', 'image', 'service_link', 'is_visible')
+
+@admin.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'job_title', 'email', 'phone', 'is_visible')
+    list_filter = ('is_visible', 'job_title')
+    search_fields = ('first_name', 'last_name', 'job_title', 'email', 'phone')
+    fields = ('first_name', 'last_name', 'job_title', 'email', 'phone', 'whatsapp_link', 'telegram_link', 'image', 'is_visible')
