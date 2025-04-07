@@ -25,13 +25,13 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 class TextEntry(models.Model):
-    SELECT_CHOICES = [
-        ('1', 'نوشته خیلی بزرگ '),
-        ('2', 'نوشته بزرگ'),
-        ('3', 'نوشته متوسط'),
-        ('4', 'نوشته کوچک'),
-        ('5', 'نوشته خیلی کوچک'),
-        ('6', 'نوشته خیلی خیلی کوچک'),
+    TITLE_SIZE_CHOICES = [
+        ('1', 'عنوان خیلی بزرگ (h1)'),
+        ('2', 'عنوان بزرگ (h2)'),
+        ('3', 'عنوان متوسط (h3)'),
+        ('4', 'عنوان کوچک (h4)'),
+        ('5', 'عنوان خیلی کوچک (h5)'),
+        ('6', 'عنوان خیلی خیلی کوچک (h6)'),
     ]
 
     id = models.AutoField(primary_key=True)
@@ -39,23 +39,43 @@ class TextEntry(models.Model):
         max_length=50,
         unique=True,
         help_text="شناسه یکتا برای کنترل ترتیب نمایش (به صورت خودکار ایجاد می‌شود)",
-        blank=True  # اجازه خالی بودن در فرم
+        blank=True
     )
-    entry_id = models.CharField(max_length=20, unique=True, help_text="Auto-generated unique identifier")
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='text_entries')
+    entry_id = models.CharField(max_length=20, unique=True, help_text="شناسه یکتا برای هر متن")
+    title = models.CharField(max_length=200, verbose_name="عنوان متن")
+    content = models.TextField(verbose_name="محتوا")
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='text_entries', verbose_name="دسته‌بندی")
     image = models.ImageField(
         upload_to=get_product_image_filepath,
         default=get_default_product_image,
-        null=True,
-        blank=True
+        null=True, 
+        blank=True,
+        verbose_name="تصویر"
     )
-    display_order = models.PositiveIntegerField(default=0, help_text="Order in which this entry should be displayed (0 = first)")
-    is_visible = models.BooleanField(default=True, help_text="Whether this entry should be displayed on the site")
-    select_option = models.CharField(max_length=1, choices=SELECT_CHOICES, default='1', help_text="Select an option from 1 to 6")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    display_order = models.PositiveIntegerField(
+        default=0, 
+        help_text="ترتیب نمایش متن (0 = اول)",
+        verbose_name="ترتیب نمایش"
+    )
+    is_visible = models.BooleanField(
+        default=True, 
+        help_text="آیا این متن در سایت نمایش داده شود؟",
+        verbose_name="نمایش در سایت"
+    )
+    title_size = models.CharField(
+        max_length=1, 
+        choices=TITLE_SIZE_CHOICES, 
+        default='1', 
+        help_text="اندازه عنوان متن را انتخاب کنید",
+        verbose_name="اندازه عنوان"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="تاریخ بروزرسانی")
+
+    def get_title_html(self):
+        """Returns the title wrapped in appropriate HTML tag based on selected size"""
+        tag = f'h{self.title_size}'
+        return f'<{tag}>{self.title}</{tag}>'
 
     def save(self, *args, **kwargs):
         if not self.unique_id:
@@ -95,9 +115,9 @@ class TextEntry(models.Model):
         return f"{self.unique_id} - {self.title}"
 
     class Meta:
-        verbose_name = 'Text Entry'
-        verbose_name_plural = 'Text Entries'
-        ordering = ['unique_id']
+        verbose_name = 'متن'
+        verbose_name_plural = 'متن‌ها'
+        ordering = ['display_order', 'created_at']
 
 
 

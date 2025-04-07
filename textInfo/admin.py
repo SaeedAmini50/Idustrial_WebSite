@@ -10,19 +10,19 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(TextEntry)
 class TextEntryAdmin(admin.ModelAdmin):
-    list_display = ('unique_id', 'entry_id', 'title', 'category', 'is_visible', 'select_option', 'created_at')
-    list_filter = ('category', 'is_visible', 'select_option', 'created_at')
+    list_display = ('unique_id', 'entry_id', 'title', 'category', 'is_visible', 'title_size', 'created_at')
+    list_filter = ('category', 'is_visible', 'title_size', 'created_at')
     search_fields = ('unique_id', 'entry_id', 'title', 'content')
     readonly_fields = ('entry_id', 'created_at', 'updated_at')
-    list_editable = ('is_visible', 'select_option')
-    ordering = ('unique_id',)
+    list_editable = ('is_visible', 'title_size')
+    ordering = ('display_order', 'created_at')
     
     fieldsets = (
         ('اطلاعات اصلی', {
             'fields': ('unique_id', 'title', 'content', 'category', 'image')
         }),
         ('تنظیمات نمایش', {
-            'fields': ('is_visible', 'select_option')
+            'fields': ('is_visible', 'title_size', 'display_order')
         }),
         ('اطلاعات سیستمی', {
             'fields': ('entry_id', 'created_at', 'updated_at'),

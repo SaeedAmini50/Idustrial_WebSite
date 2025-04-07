@@ -20,7 +20,7 @@
                         <div class="col-lg-7 col-md-6">
                             <div class="section-header text-right">
                                
-                                <h3>{{ text.title }}</h3>
+                                {{ text.get_title_html|safe }}
                             </div>
                             <div class="about-text">
                                 {{ text.content|linebreaks }}
