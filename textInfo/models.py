@@ -3,6 +3,17 @@ import uuid
 
 # Create your models here.
 
+
+def get_product_image_filepath(self, filename):
+    return 'textInfo/text_images/' + str(self.pk) + '/text_image.png'
+
+
+def get_default_product_image():
+    return "textInfo/text_default_images/default_text_image.png"
+
+
+
+
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField(blank=True)
@@ -34,7 +45,12 @@ class TextEntry(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='text_entries')
-    image = models.ImageField(upload_to='text_entries/', null=True, blank=True)
+    image = models.ImageField(
+        upload_to=get_product_image_filepath,
+        default=get_default_product_image,
+        null=True,
+        blank=True
+    )
     display_order = models.PositiveIntegerField(default=0, help_text="Order in which this entry should be displayed (0 = first)")
     is_visible = models.BooleanField(default=True, help_text="Whether this entry should be displayed on the site")
     select_option = models.CharField(max_length=1, choices=SELECT_CHOICES, default='1', help_text="Select an option from 1 to 6")
@@ -97,7 +113,12 @@ class HeaderInfo(models.Model):
     email = models.EmailField(verbose_name='ایمیل')
     phone = models.CharField(max_length=20, verbose_name='شماره تماس')
     working_hours = models.CharField(max_length=100, verbose_name='ساعت کاری')
-    logo = models.ImageField(upload_to='logos/', verbose_name='لوگو', null=True, blank=True)
+    logo = models.ImageField(
+        upload_to=get_product_image_filepath,
+        default=get_default_product_image,
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'اطلاعات هدر'
@@ -128,7 +149,12 @@ class FooterInfo(models.Model):
 class CompanyInfo(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
     content = models.TextField(verbose_name='متن')
-    image = models.ImageField(upload_to='company_info/', verbose_name='عکس', null=True, blank=True)
+    image = models.ImageField(
+        upload_to=get_product_image_filepath,
+        default=get_default_product_image,
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'اطلاعات معرفی شرکت'
@@ -140,7 +166,12 @@ class CompanyInfo(models.Model):
 class Service(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان خدمت')
     content = models.TextField(verbose_name='توضیحات خدمت')
-    image = models.ImageField(upload_to='services/', verbose_name='عکس خدمت', null=True, blank=True)
+    image = models.ImageField(
+        upload_to=get_product_image_filepath,
+        default=get_default_product_image,
+        null=True,
+        blank=True
+    )
     service_link = models.URLField(verbose_name='لینک خدمت', blank=True, null=True)
     is_visible = models.BooleanField(default=True, verbose_name='نمایش در سایت')
 
@@ -159,7 +190,12 @@ class Employee(models.Model):
     phone = models.CharField(max_length=20, verbose_name='شماره تماس', blank=True, null=True)
     whatsapp_link = models.URLField(verbose_name='لینک واتساپ', blank=True, null=True)
     telegram_link = models.URLField(verbose_name='لینک تلگرام', blank=True, null=True)
-    image = models.ImageField(upload_to='employees/', verbose_name='عکس', null=True, blank=True)
+    image = models.ImageField(
+        upload_to=get_product_image_filepath,
+        default=get_default_product_image,
+        null=True,
+        blank=True
+    )
     is_visible = models.BooleanField(default=True, verbose_name='نمایش در سایت')
 
     class Meta:
