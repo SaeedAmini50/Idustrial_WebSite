@@ -24,9 +24,6 @@ class AdminTextListView(ListView):
         return TextEntry.objects.all().order_by('unique_id')
     
 def single(request):
-    texts = sorted(
-        TextEntry.objects.filter(is_visible=True),
-        key=lambda x: int(x.unique_id)
-    )
+    texts = TextEntry.objects.filter(is_visible=True).order_by('unique_id') 
     numbers = Number.objects.all()
     return render(request, 'single.html', {'texts': texts, 'numbers': numbers})

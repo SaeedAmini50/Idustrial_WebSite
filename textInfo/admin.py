@@ -16,7 +16,8 @@ class TextEntryAdmin(admin.ModelAdmin):
     readonly_fields = ('entry_id', 'created_at', 'updated_at')
     list_editable = ('is_visible', 'title_size')
     ordering = ('unique_id',)
-    
+ 
+
     fieldsets = (
         ('اطلاعات اصلی', {
             'fields': ('unique_id', 'title', 'content', 'category', 'image')

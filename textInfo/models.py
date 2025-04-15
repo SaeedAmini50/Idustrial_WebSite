@@ -35,12 +35,12 @@ class TextEntry(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    unique_id = models.CharField(
-        max_length=50,
-        unique=True,
-        help_text="شناسه یکتا برای کنترل ترتیب نمایش (به صورت خودکار ایجاد می‌شود)",
-        blank=True
-    )
+    unique_id = models.IntegerField(
+    unique=True,
+    help_text="شناسه یکتا برای کنترل ترتیب نمایش",
+    blank=True,
+    null=True
+)
     entry_id = models.CharField(max_length=20, unique=True, help_text="شناسه یکتا برای هر متن")
     title = models.CharField(max_length=200, verbose_name="عنوان متن")
     content = models.TextField(verbose_name="محتوا")
