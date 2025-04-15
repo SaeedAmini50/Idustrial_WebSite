@@ -47,7 +47,6 @@ class TextEntry(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='text_entries', verbose_name="دسته‌بندی")
     image = models.ImageField(
         upload_to=get_product_image_filepath,
-        default=get_default_product_image,
         null=True, 
         blank=True,
         verbose_name="تصویر"
@@ -80,7 +79,7 @@ class TextEntry(models.Model):
     def save(self, *args, **kwargs):
         if not self.unique_id:
             # اگر unique_id خالی باشد، یک شماره جدید ایجاد می‌کنیم
-            last_entry = TextEntry.objects.order_by('-id').first()
+            last_entry = TextEntry.objects.order_by('-unique_id').first()
             if last_entry and last_entry.unique_id:
                 try:
                     # سعی می‌کنیم آخرین شماره را پیدا کنیم
@@ -91,7 +90,7 @@ class TextEntry(models.Model):
             else:
                 new_number = 1
             
-            # فقط عدد را به عنوان شناسه ذخیره می‌کنیم
+            # عدد را به عنوان شناسه ذخیره می‌کنیم
             self.unique_id = str(new_number)
         
         if not self.entry_id:
@@ -117,7 +116,7 @@ class TextEntry(models.Model):
     class Meta:
         verbose_name = 'متن'
         verbose_name_plural = 'متن‌ها'
-        ordering = ['display_order', 'created_at']
+        ordering = ['unique_id']
 
 
 

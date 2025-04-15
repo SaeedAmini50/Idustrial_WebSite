@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
-from .models import TextEntry
+from .models import TextEntry, Number
 
 # Create your views here.
 
@@ -22,9 +22,11 @@ class AdminTextListView(ListView):
 
     def get_queryset(self):
         return TextEntry.objects.all().order_by('unique_id')
-
-
+    
 def single(request):
-    texts = TextEntry.objects.filter(is_visible=True).order_by('unique_id')
-    return render(request, 'single.html', {'texts': texts})
-
+    texts = sorted(
+        TextEntry.objects.filter(is_visible=True),
+        key=lambda x: int(x.unique_id)
+    )
+    numbers = Number.objects.all()
+    return render(request, 'single.html', {'texts': texts, 'numbers': numbers})
