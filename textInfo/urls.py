@@ -6,7 +6,8 @@ app_name = 'textInfo'
 urlpatterns = [
     path('texts/', views.PublicTextListView.as_view(), name='text_list'),
     path('admin/texts/', views.AdminTextListView.as_view(), name='admin_text_list'),
-    path('single/', views.single, name='single'),
+    path('cnc/', views.cnc, name='cnc'),
+    path('wirecut/', views.wirecut, name='wirecut'),
    
     
 ] 

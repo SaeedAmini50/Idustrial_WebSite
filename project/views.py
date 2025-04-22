@@ -30,19 +30,11 @@ def portfolio (requset):
 def service (requset):
     return render(requset , 'service.html')
 
-def cnc (requset):
-    return render(requset , 'cnc.html')
-
 def team (requset):
     return render(requset , 'team.html')
 
 def contact (requset):
     return render(requset , 'contact.html')
-
-def single(request):
-    texts = TextEntry.objects.filter(is_visible=True).order_by('unique_id')
-    numbers = Number.objects.all()
-    return render(request, 'single.html', {'texts': texts, 'numbers': numbers})
 
 def number2(request):
     numbers = Number.objects.all()[:4]

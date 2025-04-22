@@ -23,7 +23,14 @@ class AdminTextListView(ListView):
     def get_queryset(self):
         return TextEntry.objects.all().order_by('unique_id')
     
-def single(request):
-    texts = TextEntry.objects.filter(is_visible=True).order_by('unique_id') 
+def cnc(request):
+    texts = TextEntry.objects.filter(is_visible=True, category__name='cnc').order_by('unique_id')
     numbers = Number.objects.all()
-    return render(request, 'single.html', {'texts': texts, 'numbers': numbers})
+    return render(request, 'cnc.html', {'texts': texts, 'numbers': numbers})
+
+
+
+def wirecut(request):
+    texts = TextEntry.objects.filter(is_visible=True, category__name='wirecut').order_by('unique_id')
+    numbers = Number.objects.all()
+    return render(request, 'wirecut.html', {'texts': texts, 'numbers': numbers})
