@@ -223,3 +223,31 @@ class Employee(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.job_title}"
+
+class MainPageImage(models.Model):
+    title = models.CharField(max_length=200, verbose_name="عنوان")
+    description = models.TextField(verbose_name="توضیحات", blank=True)
+    image = models.ImageField(
+        upload_to='main_page_images/',
+        verbose_name="تصویر"
+    )
+    display_order = models.PositiveIntegerField(
+        default=0,
+        help_text="ترتیب نمایش (0 = اول)",
+        verbose_name="ترتیب نمایش"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text="آیا این تصویر در صفحه اصلی نمایش داده شود؟",
+        verbose_name="فعال"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="تاریخ بروزرسانی")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'تصویر صفحه اصلی'
+        verbose_name_plural = 'تصاویر صفحه اصلی'
+        ordering = ['display_order']

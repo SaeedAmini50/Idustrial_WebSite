@@ -8,41 +8,24 @@
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <!-- نشانگرهای اسلایدر -->
     <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel" data-slide-to="1"></li>
-        <li data-target="#carousel" data-slide-to="2"></li>
+        {% for image in main_images %}
+            <li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+        {% endfor %}
     </ol>
 
     <div class="carousel-inner">
-        <!-- اسلاید اول -->
-        <div class="carousel-item active">
-            <img src="{% static 'img/photo (22).jpeg' %}" alt="ساخت و ساز حرفه‌ای">
-            <div class="carousel-caption">
-                <p class="animated fadeInRight">ما حرفه‌ای هستیم</p>
-                <h1 class="animated fadeInLeft">تحقق ایده‌های شما</h1>
-                <a class="btn animated fadeInUp" href="#">مشاوره رایگان</a>
+        {% for image in main_images %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                <div class="carousel-caption">
+                    {% if image.description %}
+                        <p class="animated fadeInRight">{{ image.description }}</p>
+                    {% endif %}
+                    <h1 class="animated fadeInLeft">{{ image.title }}</h1>
+                    <a class="btn animated fadeInUp" href="#">مشاوره رایگان</a>
+                </div>
             </div>
-        </div>
- 
-        <!-- اسلاید دوم -->
-        <div class="carousel-item">
-            <img src="{% static 'img/photo (18).jpeg' %}" alt="تیم مهندسی مجرب">
-            <div class="carousel-caption">
-                <p class="animated fadeInRight">متخصص در ساخت و ساز</p>
-                <h1 class="animated fadeInLeft">پروژه‌های مدرن و مطمئن</h1>
-                <a class="btn animated fadeInUp" href="#">مشاهده نمونه کارها</a>
-            </div>
-        </div>
-
-        <!-- اسلاید سوم -->
-        <div class="carousel-item">
-            <img src="{% static 'img/photo (27).jpeg' %}" alt="طراحی و اجرا">
-            <div class="carousel-caption">
-                <p class="animated fadeInRight">اعتماد شما، سرمایه ما</p>
-                <h1 class="animated fadeInLeft">ساخت خانه رویایی شما</h1>
-                <a class="btn animated fadeInUp" href="#">ارتباط با ما</a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <!-- دکمه‌های کنترل اسلایدر -->
