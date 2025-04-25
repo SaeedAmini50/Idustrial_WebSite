@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from textInfo.models import TextEntry, Number, MainPageImage
+from textInfo.models import TextEntry, Number, MainPageImage, Project
 
 def home(request):
     main_images = MainPageImage.objects.filter(is_active=True).order_by('display_order')
@@ -16,17 +16,12 @@ def header (requset):
     return render(requset , 'header.html')
 
 
-
-
-
 def about (requset):
     return render(requset , 'about.html')
 
 def blog (requset):
     return render(requset , 'blog.html')
 
-def portfolio (requset):
-    return render(requset , 'portfolio.html')
 
 def service (requset):
     return render(requset , 'service.html')

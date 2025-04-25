@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 {% load static%}
 {%  block content %} 
-
-            
             <!-- Page Header Start -->
             <div class="page-header">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h2>Our Projects</h2>
+                            <h2>پروژه‌های ما</h2>
                         </div>
+                    
                         <div class="col-12">
-                            <a href="">Home</a>
-                            <a href="">Our Projects</a>
+                            <a href="{% url 'project:home' %}">خانه</a>
+                            <a href="">پروژه‌های ما</a>
                         </div>
                     </div>
                 </div>
@@ -29,69 +28,31 @@
                         <div class="col-12">
                             <ul id="portfolio-flters">
                                 <li data-filter="*" class="filter-active">همه</li>
-                                <li data-filter=".first">تکمیل‌شده</li>
-                                <li data-filter=".second">در حال اجرا</li>
-                                <li data-filter=".third">آینده</li>
+                                <li data-filter=".completed">تکمیل‌شده</li>
+                                <li data-filter=".in_progress">در حال اجرا</li>
+                                <li data-filter=".planned">برنامه‌ریزی شده</li>
                             </ul>
                         </div>
                     </div>
                     <div class="row portfolio-container">
-                        <!-- پروژه ۱ -->
-                        <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                        {% for project in active_projects %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item {{ project.status }} wow fadeInUp" data-wow-delay="0.1s">
                             <div class="portfolio-warp">
                                 <div class="portfolio-img">
-                                    <img src="{% static 'img/photo (2).jpeg' %}" alt="تصویر پروژه">
+                                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
                                     <div class="portfolio-overlay">
                                         <p>
-                                            توضیحی درباره این پروژه که اطلاعات کلی آن را نمایش می‌دهد.
+                                            {{ project.description }}
                                         </p>
                                     </div>
                                 </div>
                                 <div class="portfolio-text">
-                                    <h3>نام پروژه</h3>
-                                    <a class="btn" href="{% static 'img/photo (3).jpeg' %}" data-lightbox="portfolio">+</a>
+                                    <h3>{{ project.title }}</h3>
+                                    <a class="btn" href="{{ project.image.url }}" data-lightbox="portfolio">+</a>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- پروژه ۲ -->
-                        <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item second wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="portfolio-warp">
-                                <div class="portfolio-img">
-                                    <img src="{% static 'img/photo (4).jpeg' %}" alt="تصویر پروژه">
-                                    <div class="portfolio-overlay">
-                                        <p>
-                                            توضیحی درباره این پروژه که اطلاعات کلی آن را نمایش می‌دهد.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="portfolio-text">
-                                    <h3>نام پروژه</h3>
-                                    <a class="btn" href="{% static 'img/photo (5).jpeg' %}" data-lightbox="portfolio">+</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- پروژه ۳ -->
-                        <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item third wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="portfolio-warp">
-                                <div class="portfolio-img">
-                                    <img src="{% static 'img/photo (5).jpeg' %}" alt="تصویر پروژه">
-                                    <div class="portfolio-overlay">
-                                        <p>
-                                            توضیحی درباره این پروژه که اطلاعات کلی آن را نمایش می‌دهد.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="portfolio-text">
-                                    <h3>نام پروژه</h3>
-                                    <a class="btn" href="{% static 'img/photo (4).jpeg' %}" data-lightbox="portfolio">+</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- سایر پروژه‌ها مشابه این ساختار ادامه دارد -->
-
+                        {% endfor %}
                     </div>
                     
                     <!-- دکمه بارگذاری بیشتر -->

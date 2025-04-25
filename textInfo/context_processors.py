@@ -1,4 +1,4 @@
-from .models import Number, TextEntry, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee
+from .models import Number, TextEntry, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee, Project
 
 def numbers_processor(request):
     """
@@ -61,3 +61,8 @@ def employees_processor(request):
         return {'employees': employees}
     except:
         return {'employees': []}
+
+def active_projects(request):
+    projects = Project.objects.filter(is_active=True).order_by('display_order')
+    return {'active_projects': projects}
+

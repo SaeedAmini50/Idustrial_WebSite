@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/texts/', views.AdminTextListView.as_view(), name='admin_text_list'),
     path('cnc/', views.cnc, name='cnc'),
     path('wirecut/', views.wirecut, name='wirecut'),
+    path('portfolio/', views.portfolio, name='portfolio'),
    
     
 ] 

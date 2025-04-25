@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextEntry, Category, Number, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee, MainPageImage
+from .models import TextEntry, Category, Number, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee, MainPageImage, Project
 
 
 @admin.register(Category)
@@ -77,3 +77,25 @@ class MainPageImageAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description')
     list_editable = ('display_order', 'is_active')
     ordering = ('display_order',)
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('project_id', 'title', 'category', 'status', 'display_order', 'is_active', 'created_at')
+    list_filter = ('category', 'status', 'is_active', 'created_at')
+    search_fields = ('project_id', 'title', 'description')
+    list_editable = ('display_order', 'is_active', 'status')
+    readonly_fields = ('project_id', 'created_at', 'updated_at')
+    ordering = ('display_order',)
+
+    fieldsets = (
+        ('اطلاعات اصلی', {
+            'fields': ('title', 'description', 'category', 'image', 'status')
+        }),
+        ('تنظیمات نمایش', {
+            'fields': ('is_active', 'display_order')
+        }),
+        ('اطلاعات سیستمی', {
+            'fields': ('project_id', 'created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )

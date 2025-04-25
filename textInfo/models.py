@@ -251,3 +251,76 @@ class MainPageImage(models.Model):
         verbose_name = 'تصویر صفحه اصلی'
         verbose_name_plural = 'تصاویر صفحه اصلی'
         ordering = ['display_order']
+
+class Project(models.Model):
+    STATUS_CHOICES = [
+        ('in_progress', 'در حال اجرا'),
+        ('completed', 'تکمیل شده'),
+        ('planned', 'برنامه‌ریزی شده'),
+    ]
+
+    title = models.CharField(max_length=200, verbose_name="عنوان پروژه")
+    description = models.TextField(verbose_name="توضیحات پروژه")
+    image = models.ImageField(
+        upload_to='projects/',
+        verbose_name="تصویر پروژه"
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.PROTECT,
+        related_name='projects',
+        verbose_name="دسته‌بندی"
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='in_progress',
+        verbose_name="وضعیت پروژه"
+    )
+    project_id = models.CharField(
+        max_length=20,
+        unique=True,
+        help_text="شناسه یکتا برای پروژه",
+        verbose_name="شناسه پروژه"
+    )
+    display_order = models.PositiveIntegerField(
+        default=0,
+        help_text="ترتیب نمایش (0 = اول)",
+        verbose_name="ترتیب نمایش"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text="آیا این پروژه در سایت نمایش داده شود؟",
+        verbose_name="فعال"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="تاریخ بروزرسانی")
+
+    def __str__(self):
+        return f"{self.project_id} - {self.title}"
+
+    def get_status_display(self):
+        return dict(self.STATUS_CHOICES)[self.status]
+
+    def save(self, *args, **kwargs):
+        if not self.project_id:
+            # Get the last project_id or start from 1
+            last_project = Project.objects.order_by('-id').first()
+            if last_project:
+                try:
+                    last_number = int(last_project.project_id.split('-')[1])
+                    new_number = last_number + 1
+                except (IndexError, ValueError):
+                    new_number = 1
+            else:
+                new_number = 1
+            
+            # Format: PRJ-001, PRJ-002, etc.
+            self.project_id = f"PRJ-{new_number:03d}"
+        
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'پروژه'
+        verbose_name_plural = 'پروژه‌ها'
+        ordering = ['display_order']
