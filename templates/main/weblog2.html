@@ -1,5 +1,4 @@
 {% load static %}
-
 <!-- شروع بخش وبلاگ -->
 <div class="blog">
     <div class="container">
@@ -8,71 +7,29 @@
             <h2>آخرین دستاوردها و فناوری‌های صنعتی</h2>
         </div>
         <div class="row">
-            <!-- اولین مقاله -->
+            <!-- نمایش سه پروژه آخر -->
+            {% for project in active_projects|slice:":3" %}
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="blog-item">
                     <div class="blog-img">
-                        <img src="{% static 'img/photo (2).jpeg' %}" alt="تحولات جدید در فناوری‌های صنعتی">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
                     </div>
                     <div class="blog-title">
-                        <h3>تحولات جدید در فناوری‌های صنعتی</h3>
-                        <a class="btn" href="">+</a>
+                        <h3>{{ project.title }}</h3>
+                        <a class="btn" href="{{ project.image.url }}" data-lightbox="portfolio">+</a>
                     </div>
                     <div class="blog-meta">
-                        <p>نویسنده: <a href="">تیم HPN</a></p>
-                        <p>دسته‌بندی: <a href="">نوآوری‌های صنعتی</a></p>
+                        <p>وضعیت: <a href="">{{ project.get_status_display }}</a></p>
+                        <p>دسته‌بندی: <a href="">{{ project.category.name }}</a></p>
                     </div>
                     <div class="blog-text">
                         <p>
-                            بررسی جدیدترین تکنولوژی‌های صنعتی که باعث افزایش بهره‌وری، کاهش هزینه‌ها و بهبود کیفیت تولید شده‌اند.
+                            {{ project.description|linebreaks }}
                         </p>
                     </div>
                 </div>
             </div>
-
-            <!-- دومین مقاله -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="{% static 'img/photo (3).jpeg' %}" alt="نقش قطعات باکیفیت در صنعت">
-                    </div>
-                    <div class="blog-title">
-                        <h3>نقش قطعات باکیفیت در صنعت</h3>
-                        <a class="btn" href="">+</a>
-                    </div>
-                    <div class="blog-meta">
-                        <p>نویسنده: <a href="">تیم HPN</a></p>
-                        <p>دسته‌بندی: <a href="">قطعات صنعتی</a></p>
-                    </div>
-                    <div class="blog-text">
-                        <p>
-                            استفاده از قطعات صنعتی باکیفیت تأثیر مستقیمی بر عملکرد ماشین‌آلات و افزایش طول عمر تجهیزات دارد. در این مقاله به معیارهای انتخاب بهترین قطعات می‌پردازیم.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- سومین مقاله -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="{% static 'img/photo (4).jpeg' %}" alt="مدیریت پروژه‌های صنعتی">
-                    </div>
-                    <div class="blog-title">
-                        <h3>مدیریت پروژه‌های صنعتی</h3>
-                        <a class="btn" href="">+</a>
-                    </div>
-                    <div class="blog-meta">
-                        <p>نویسنده: <a href="">تیم HPN</a></p>
-                        <p>دسته‌بندی: <a href="">مدیریت پروژه</a></p>
-                    </div>
-                    <div class="blog-text">
-                        <p>
-                            اجرای موفق پروژه‌های صنعتی نیازمند برنامه‌ریزی دقیق، مدیریت منابع و استفاده از روش‌های بهینه‌سازی است. در این مقاله نکات کلیدی این حوزه را بررسی می‌کنیم.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

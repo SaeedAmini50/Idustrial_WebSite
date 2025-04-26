@@ -17,6 +17,7 @@
                 </div>
             </div>
             <!-- Page Header End -->
+
             <!-- شروع بخش نمونه‌کارها -->
             <div class="portfolio">
                 <div class="container">
@@ -28,21 +29,21 @@
                         <div class="col-12">
                             <ul id="portfolio-flters">
                                 <li data-filter="*" class="filter-active">همه</li>
-                                <li data-filter=".completed">تکمیل‌شده</li>
-                                <li data-filter=".in_progress">در حال اجرا</li>
-                                <li data-filter=".planned">برنامه‌ریزی شده</li>
+                                <li data-filter=".first">تکمیل‌شده</li>
+                                <li data-filter=".second">در حال اجرا</li>
+                                <li data-filter=".third">برنامه‌ریزی شده</li>
                             </ul>
                         </div>
                     </div>
                     <div class="row portfolio-container">
                         {% for project in active_projects %}
-                        <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item {{ project.status }} wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item {% if project.status == 'completed' %}first{% elif project.status == 'in_progress' %}second{% else %}third{% endif %} wow fadeInUp" data-wow-delay="0.1s">
                             <div class="portfolio-warp">
                                 <div class="portfolio-img">
                                     <img src="{{ project.image.url }}" alt="{{ project.title }}">
                                     <div class="portfolio-overlay">
                                         <p>
-                                            {{ project.description }}
+                                            {{ project.description|linebreaks }}
                                         </p>
                                     </div>
                                 </div>

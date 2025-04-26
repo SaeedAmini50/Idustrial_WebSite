@@ -1,4 +1,4 @@
-from .models import Number, TextEntry, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee, Project
+from .models import Number, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee, Project
 
 def numbers_processor(request):
     """
@@ -16,8 +16,7 @@ def header_info_processor(request):
     try:
         header_info = HeaderInfo.objects.first()
     except HeaderInfo.DoesNotExist:
-        header_info = None
-    
+        header_info = None    
     return {
         'header_info': header_info
     }
@@ -65,4 +64,3 @@ def employees_processor(request):
 def active_projects(request):
     projects = Project.objects.filter(is_active=True).order_by('display_order')
     return {'active_projects': projects}
-
