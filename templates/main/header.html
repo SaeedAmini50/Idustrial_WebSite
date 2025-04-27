@@ -78,20 +78,20 @@
                 <!-- لینک‌های منو -->
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="{%url 'project:home'%}" class="nav-item nav-link active">خانه</a>
-                        <a href="{%url 'project:about'%}" class="nav-item nav-link">درباره ما</a>
-                        <a href="{%url 'project:service'%}" class="nav-item nav-link">خدمات</a>
-                        <a href="{%url 'project:team'%}" class="nav-item nav-link">تیم</a>
-                        <a href="{%url 'textInfo:portfolio'%}" class="nav-item nav-link">نمونه کارها</a>
+                        <a href="{% url 'project:home' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">خانه</a>
+                        <a href="{% url 'project:about' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">درباره ما</a>
+                        <a href="{% url 'project:service' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'service' %}active{% endif %}">خدمات</a>
+                        <a href="{% url 'project:team' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'team' %}active{% endif %}">تیم</a>
+                        <a href="{% url 'textInfo:portfolio' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'portfolio' %}active{% endif %}">نمونه کارها</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">صفحات</a>
+                            <a href="#" class="nav-link dropdown-toggle {% if request.resolver_match.url_name in 'blog,cnc,wirecut' %}active{% endif %}" data-toggle="dropdown">صفحات</a>
                             <div class="dropdown-menu">
-                                <a href="{%url 'project:blog'%}" class="dropdown-item">صفحه وبلاگ</a>
-                                <a href="{%url 'textInfo:cnc'%}" class="dropdown-item">سی ان سی</a>
-                                <a href="{%url 'textInfo:wirecut'%}" class="dropdown-item">وایرکات</a>
+                                <a href="{% url 'project:blog' %}" class="dropdown-item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">صفحه وبلاگ</a>
+                                <a href="{% url 'textInfo:cnc' %}" class="dropdown-item {% if request.resolver_match.url_name == 'cnc' %}active{% endif %}">سی ان سی</a>
+                                <a href="{% url 'textInfo:wirecut' %}" class="dropdown-item {% if request.resolver_match.url_name == 'wirecut' %}active{% endif %}">وایرکات</a>
                             </div>
                         </div>
-                        <a href="{%url 'project:contact'%}" class="nav-item nav-link">تماس با ما</a>
+                        <a href="{% url 'project:contact' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">تماس با ما</a>
                     </div>
                     <!-- دکمه دانلود -->
                     <div class="mr-auto">
