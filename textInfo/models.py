@@ -210,10 +210,11 @@ class Employee(models.Model):
     whatsapp_link = models.URLField(verbose_name='لینک واتساپ', blank=True, null=True)
     telegram_link = models.URLField(verbose_name='لینک تلگرام', blank=True, null=True)
     image = models.ImageField(
-        upload_to=get_product_image_filepath,
+        upload_to='employees/',
         default=get_default_product_image,
         null=True,
-        blank=True
+        blank=True,
+        verbose_name='عکس'
     )
     is_visible = models.BooleanField(default=True, verbose_name='نمایش در سایت')
 
