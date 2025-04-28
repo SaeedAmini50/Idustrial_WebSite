@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
-from .models import TextEntry, Number, Project
+from .models import TextEntry, Number, Project,Video
 
 # Create your views here.
 
@@ -39,3 +39,9 @@ def wirecut(request):
 def portfolio(request):
     active_projects = Project.objects.filter(is_active=True).order_by('display_order')
     return render(request, 'portfolio.html', {'active_projects': active_projects})
+
+
+
+def video_view(request):
+    videos = Video.objects.filter(is_active=True)
+    return render(request, 'main/index.html', {'videos': videos})

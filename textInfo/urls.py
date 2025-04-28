@@ -9,7 +9,6 @@ urlpatterns = [
     path('cnc/', views.cnc, name='cnc'),
     path('wirecut/', views.wirecut, name='wirecut'),
     path('portfolio/', views.portfolio, name='portfolio'),
-   
-    
+    path('videos/', views.video_view, name='videos'),
 ] 
  

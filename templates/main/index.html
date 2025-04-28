@@ -12,7 +12,8 @@
             <li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
         {% endfor %}
     </ol>
-
+ 
+    
     <div class="carousel-inner">
         {% for image in main_images %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -125,10 +126,6 @@
 
 
 
-
-            
-
-            {%  block question2 %} {% include 'question2.html' %} {% endblock %}
 
 
 

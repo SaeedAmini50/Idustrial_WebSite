@@ -1,10 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from textInfo.models import TextEntry, Number, MainPageImage, Project
+from textInfo.models import TextEntry, Number, MainPageImage, Video
 
 def home(request):
     main_images = MainPageImage.objects.filter(is_active=True).order_by('display_order')
-    return render(request, 'index.html', {'main_images': main_images})
+    videos = Video.objects.filter(is_active=True)
+    return render(request, 'index.html', {
+        'main_images': main_images,
+        'videos': videos
+    })
 
 
 def footer (requset):

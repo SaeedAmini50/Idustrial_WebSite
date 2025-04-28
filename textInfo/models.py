@@ -1,5 +1,8 @@
 from django.db import models
 import uuid
+import os
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
@@ -325,3 +328,76 @@ class Project(models.Model):
         verbose_name = 'پروژه'
         verbose_name_plural = 'پروژه‌ها'
         ordering = ['display_order']
+
+
+
+def validate_video_file(value):
+    # محدودیت حجم فایل (512 مگابایت)
+    filesize = value.size
+    if filesize > 512 * 1024 * 1024:  # 512MB
+        raise ValidationError(_('حجم فایل ویدیو نباید بیشتر از 512 مگابایت باشد.'))
+
+def validate_video_duration(value):
+    # این تابع باید در زمان آپلود ویدیو اجرا شود
+    # برای سادگی، فقط نام فایل را بررسی می‌کنیم
+    # در عمل، باید از کتابخانه‌ای مانند moviepy استفاده شود
+    pass
+
+class Video(models.Model):
+    title = models.CharField(max_length=200, verbose_name="عنوان ویدیو")
+    description = models.TextField(verbose_name="توضیحات ویدیو", blank=True, null=True)
+    video_file = models.FileField(
+        upload_to='videos/',
+        verbose_name="فایل ویدیو",
+        null=True,
+        blank=True,
+        validators=[validate_video_file],
+        help_text="حداکثر حجم فایل: 512 مگابایت"
+    )
+    video_url = models.URLField(verbose_name="لینک ویدیو", null=True, blank=True)
+    thumbnail = models.ImageField(upload_to='videos/thumbnails/', verbose_name="تصویر پیش‌نمایش")
+    is_active = models.BooleanField(default=True, verbose_name="فعال")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
+
+    def clean(self):
+        # بررسی اینکه حداقل یکی از فیلدهای video_file یا video_url پر شده باشد
+        if not self.video_file and not self.video_url:
+            raise ValidationError(_('لطفاً یا فایل ویدیو را آپلود کنید یا لینک ویدیو را وارد کنید.'))
+
+    def save(self, *args, **kwargs):
+        # اگر این ویدیو جدید است یا فایل ویدیو تغییر کرده است
+        if self.pk is None or (self.video_file and self.video_file != self.__class__.objects.get(pk=self.pk).video_file):
+            # پاک کردن ویدیو قبلی
+            old_videos = Video.objects.exclude(pk=self.pk)
+            for old_video in old_videos:
+                # پاک کردن فایل ویدیو از سیستم فایل
+                if old_video.video_file:
+                    if os.path.isfile(old_video.video_file.path):
+                        os.remove(old_video.video_file.path)
+                # پاک کردن تصویر پیش‌نمایش
+                if old_video.thumbnail:
+                    if os.path.isfile(old_video.thumbnail.path):
+                        os.remove(old_video.thumbnail.path)
+                # پاک کردن رکورد از دیتابیس
+                old_video.delete()
+        
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        # پاک کردن فایل ویدیو از سیستم فایل
+        if self.video_file:
+            if os.path.isfile(self.video_file.path):
+                os.remove(self.video_file.path)
+        # پاک کردن تصویر پیش‌نمایش
+        if self.thumbnail:
+            if os.path.isfile(self.thumbnail.path):
+                os.remove(self.thumbnail.path)
+        super().delete(*args, **kwargs)
+
+    class Meta:
+        verbose_name = "ویدیو"
+        verbose_name_plural = "ویدیوها"
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.title

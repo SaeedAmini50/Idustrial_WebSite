@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextEntry, Category, Number, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee, MainPageImage, Project
+from .models import TextEntry, Category, Number, HeaderInfo, FooterInfo, CompanyInfo, Service, Employee, MainPageImage, Project, Video
 
 
 @admin.register(Category)
@@ -97,5 +97,20 @@ class ProjectAdmin(admin.ModelAdmin):
         ('اطلاعات سیستمی', {
             'fields': ('project_id', 'created_at', 'updated_at'),
             'classes': ('collapse',)
+        }),
+    )
+
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'is_active', 'created_at')
+    list_filter = ('is_active',)
+    search_fields = ('title', 'description')
+    list_editable = ('is_active',)
+    fieldsets = (
+        ('اطلاعات اصلی', {
+            'fields': ('title', 'description', 'video_file', 'video_url', 'thumbnail')
+        }),
+        ('تنظیمات', {
+            'fields': ('is_active',)
         }),
     )

@@ -1,6 +1,4 @@
 {% load static %}
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -61,5 +59,23 @@
 
         <!-- Template Javascript -->
         <script src="{% static '' %}js/main.js"></script>
+        
+        <!-- Video Modal Script -->
+        <script>
+            $(document).ready(function() {
+                // تنظیم src ویدیو هنگام کلیک روی دکمه پخش
+                $('.btn-play').click(function() {
+                    var videoSrc = $(this).data('src');
+                    var targetModal = $(this).data('target');
+                    $(targetModal + ' iframe').attr('src', videoSrc);
+                });
+
+                // پاک کردن src ویدیو هنگام بستن مودال
+                $('.modal').on('hidden.bs.modal', function() {
+                    $(this).find('iframe').attr('src', '');
+                    $(this).find('video').get(0).pause();
+                });
+            });
+        </script>
     </body>
 </html>
